@@ -37,11 +37,15 @@ BASE_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    
 ]
 LOCAL_APPS = [
+    'pruebaTecnica.apps.clients',
 ]
 THIRD_APPS = [
     'rest_framework',
+    'simple_history',
+    'apps.clients',
 ]
 
 INSTALLED_APPS = BASE_APPS + LOCAL_APPS + THIRD_APPS
@@ -54,6 +58,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    # 'simple_history.middleware.HistoryRequestMiddleware',
 ]
 
 ROOT_URLCONF = 'pruebaTecnica.urls'
@@ -108,6 +113,8 @@ TIME_ZONE = 'UTC'
 USE_I18N = True
 
 USE_TZ = True
+
+AUTH_USER_MODEL = 'clients.User'
 
 
 # Static files (CSS, JavaScript, Images)
