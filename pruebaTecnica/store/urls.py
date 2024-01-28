@@ -17,7 +17,17 @@ urlpatterns = [
     path('delete-bills/<int:bill_id>/', BillDeleteAPIView.as_view(), name='delete_bills'),
     # urls de products
     path('products/', ProductListCreateAPIView.as_view(), name='product_list_create'),
-    path('products/<int:product_id>/', ProducReadUpdateDeleteAPIView.as_view(), name='product_retrieve_update_destroy'),
+    path('products/<int:product_id>/', ProducReadUpdateDeleteAPIView.as_view(), name='product_read_update_delete'),
     # tabla pivote
-    path('billproducts/', BillProductListCreateAPIView.as_view(), name='billproduct-list-create'),
+    path('billproducts/', BillProductListCreateAPIView.as_view(), name='billproduct_list_create'),
+    path('billproducts/<int:bill_id>/<int:product_id>/', BillProductReadUpdateDeleteAPIView.as_view(), name='billproduct_read_update_delete'),
+    # usuarios
+    path('register/', UserRegistrationAPIView.as_view(), name='user_registration'),
+    # para la descarga de csv
+    path('download-client-csv/', ClientCSVDownloadAPIView.as_view(), name='download-client-csv'),
+    # url para la carga de csv
+     path('upload-client-csv/', ClientCSVUploadAPIView.as_view(), name='upload-client-csv'),
+    # para una consulta ORM
+    path('all-products/', all_products, name='all_products'),
+    path('llaves/', llaves_bristol, name='bristol_keys'),
 ]
