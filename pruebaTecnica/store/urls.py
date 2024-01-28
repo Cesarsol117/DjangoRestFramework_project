@@ -6,4 +6,5 @@ from .views import *
 
 urlpatterns = [
     path('clients/', ClientView.as_view(), name='ClientList'),
+    path('clients/<int:id>', ClientView.as_view(), name='ClientList'),
 ]
