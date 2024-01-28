@@ -5,6 +5,9 @@ from .views import *
 # el nombre que va en el navegador, la vista que acompaña, y un endpoint para mostar o llamar.
 
 urlpatterns = [
-    path('clients/', ClientView.as_view(), name='ClientList'),
-    path('clients/<int:id>', ClientView.as_view(), name='ClientList'),
+   path('new-client/', ClientCreateAPIView.as_view(), name='new_clients'),
+   path('clients/', ClientAPIView.as_view(), name='all_clients'),
+   path('detail-client/<int:id>', ClientGetAPIView.as_view(), name='one_clients'),
+   path('clients/<int:id>/', ClientPutAPIView.as_view(), name='client-put'),
+   path('delete-clients/<int:id>/', ClientDeleteAPIView.as_view(), name='client-Delete'),
 ]
