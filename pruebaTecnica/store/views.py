@@ -27,7 +27,7 @@ from django.shortcuts import render
 
 class ClientCreateAPIView(APIView):
         
-    
+    permission_classes = [IsAuthenticated]
     def get(self, request):
         return Response(data = {
     
@@ -56,6 +56,7 @@ class ClientAPIView(LoginRequiredMixin, APIView):
         return Response(client_serializer.data, status=status.HTTP_200_OK)
 
 class ClientGetAPIView(APIView):
+    permission_classes = [IsAuthenticated]
     def get(self, request, id):
 
     
@@ -68,6 +69,7 @@ class ClientGetAPIView(APIView):
     
      
 class ClientPutAPIView(APIView):
+    permission_classes = [IsAuthenticated]
     def get(self, request, id):
         try:
             client = Client.objects.get(id = id)
@@ -89,7 +91,7 @@ class ClientPutAPIView(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 class ClientDeleteAPIView(APIView):
-    
+    permission_classes = [IsAuthenticated]
     def get(self, request, id):    
         try:
             client = Client.objects.get(id = id)
@@ -109,6 +111,7 @@ class ClientDeleteAPIView(APIView):
         
 # Bills o facturas
 class BillReadAPIView(APIView):
+    permission_classes = [IsAuthenticated]
     def get(self, request):
         bills = Bill.objects.all()
 
@@ -117,6 +120,7 @@ class BillReadAPIView(APIView):
         return Response(serializer.data, status=status.HTTP_200_OK)
 # create
 class BillCreateAPIView(APIView):
+    permission_classes = [IsAuthenticated]
     def get(self, request):
             return Response(data = {
                                     "client": 1,
@@ -151,6 +155,7 @@ class BillCreateAPIView(APIView):
             return Response({'error': 'client_id is required'}, status=status.HTTP_400_BAD_REQUEST)
 # Update
 class BillUpdateAPIView(APIView):
+    permission_classes = [IsAuthenticated]
     def get(self, request, bill_id):    
         try:
             one_bill = Bill.objects.get(id = bill_id)
@@ -176,6 +181,7 @@ class BillUpdateAPIView(APIView):
 # delete
 
 class BillDeleteAPIView(APIView):
+    permission_classes = [IsAuthenticated]
     def get(self, request, bill_id):    
         try:
             one_bill = Bill.objects.get(id = bill_id)
@@ -198,6 +204,7 @@ class BillDeleteAPIView(APIView):
 # CRUD Productos
 
 class ProductListCreateAPIView(APIView):
+    permission_classes = [IsAuthenticated]
     def get(self, request):
         products = Product.objects.all()
         serializer = ProductSerializer(products, many=True)
@@ -211,6 +218,7 @@ class ProductListCreateAPIView(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 class ProducReadUpdateDeleteAPIView(APIView):
+    permission_classes = [IsAuthenticated]
     def get_object(self, product_id):
         try:
             return Product.objects.get(id=product_id)
@@ -242,6 +250,7 @@ class ProducReadUpdateDeleteAPIView(APIView):
         return Response({'error': 'Product not found'}, status=status.HTTP_404_NOT_FOUND)
 # tabla pivote
 class BillProductListCreateAPIView(APIView):
+    permission_classes = [IsAuthenticated]
     def get(self, request):
         bill_products = BillProduct.objects.all()
         serializer = BillProductSerializer(bill_products, many=True)
@@ -254,6 +263,7 @@ class BillProductListCreateAPIView(APIView):
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 class BillProductReadUpdateDeleteAPIView(APIView):
+    permission_classes = [IsAuthenticated]
     def get_object(self, bill_id, product_id):
         try:
             return BillProduct.objects.get(bill_id=bill_id, product_id=product_id)
@@ -285,6 +295,7 @@ class BillProductReadUpdateDeleteAPIView(APIView):
         return Response({'error': 'BillProduct not found'}, status=status.HTTP_404_NOT_FOUND)
 # Registro de usuario
 class UserRegistrationAPIView(APIView):
+    permission_classes = [IsAuthenticated]
     def get(self, request):
         return Response(data = {
                                     "username": "default",
