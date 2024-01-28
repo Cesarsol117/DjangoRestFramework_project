@@ -15,10 +15,10 @@ Esta aplicación Django proporciona endpoints para gestionar clientes, cargar ar
 
 ## Pasos de Despliegue
 
-1. **Clona el Repositorio**
+1. **Crea un entorno virtual**
 `$ python -m venv venv`
 
-2. **Clona el Repositorio**
+2. **Activa el entorno virtual**
 `$ venv\Scripts\activate`
 
 
