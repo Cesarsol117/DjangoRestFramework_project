@@ -40,8 +40,12 @@ Esta aplicación Django proporciona endpoints para gestionar clientes, cargar ar
 La aplicación estará disponible en http://localhost:8000/.
 
 8. **Accede a la Interfaz de Administración (Opcional)**
-
     Accede a http://localhost:8000/admin/ con las credenciales del superusuario para administrar los datos.
+
+    usuarios    contrasena  
+    Manager     Cesar117  es el superusuario
+    Odin        9874      es un usuario creado
+
 9. **Prueba los Endpoints de la API**
 
     Puedes utilizar herramientas como Postman o curl para probar los endpoints de la API.
